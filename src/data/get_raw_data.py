@@ -20,7 +20,6 @@ def extract_data(file_path, url):
         
         with open(file_path, "w") as handle:
             response = s.get(url, stream=True)
-            
             for block in response.iter_content(1024):
                 handle.write(block)
 
@@ -34,9 +33,7 @@ def main(project_dir):
     raw_data_path = os.path.join(project_dir, 'data', 'raw')
     train_data_path = os.path.join(raw_data_path, 'train.csv')
     test_data_path = os.path.join(raw_data_path, 'test.csv')
-    
-    print train_data_path
-    
+        
     extract_data(train_data_path, training_data_url)
     extract_data(test_data_path, test_data_url)
     
